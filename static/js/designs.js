@@ -1,76 +1,41 @@
-<!DECTYPE html>
-  <html>
-
-  <head>
-    <meta charset="UTF-8">
-    <title>Home｜DODEKAMIN TREE Project</title>
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="images/favicon-2.ico" rel="icon">
-  </head>
-
-  <body id="index">
-    <div class="bg">
-      <header>
-        <div class="logo">
-          <a href="/index"><img src="images/project.png" alt="DODEKAMINTREE"></a>
-        </div>
-        <nav>
-          <ul class="global-nav">
-            <li><a href="/about">AboutProject</a></li>
-            <li><a href="/tree">Tree</a></li>
-            <li><a href="/waiting ">WaitingList</a></li>
-          </ul>
-        </nav>
-      </header>
-
-      <div id="wrap">
-        <div class="content">
-          <h1>なんか書く</h1>
-          <p>なんか書く</p>
-          <p class="btn"><a href="/tree">さっそくツリーを作る</a></p>
-        </div>
-      </div>
-
-
-    </div>
-<script>
-const clear = document.querySelector('.clearing');
+const sizePicker = document.querySelector('.size-picker');
 const pixelCanvas = document.querySelector('.pixel-canvas');
 const quickFill = document.querySelector('.quick-fill');
 const eraseMode = document.querySelector('.erase-mode');
 const drawMode = document.querySelector('.draw-mode');
 
-// to clear the color of the table
-clear.addEventListener('submit', function(e) {
-  //e.preventDefault();
-  var table1=document.getElementById("canvas1")
-  table1.target.style.backgroundColor=white;
+function makeGrid() {
+  let gridHeight = document.querySelector('.input-height').value;
+  let gridWidth = document.querySelector('.input-width').value;
+  // If grid already present, clears any cells that have been filled in
+  while (pixelCanvas.firstChild) {
+    pixelCanvas.removeChild(pixelCanvas.firstChild);
+    }
+  // Creates rows and cells
+for (let i = 0; i <= 12; i++) {
+    let gridRow = document.createElement('tr');
+    gridRow.classList.add("row"+String(i));
+    pixelCanvas.appendChild(gridRow);
+    let kk=[2,3,4,6,7,8,9,10,10,11,11,12];
+    for (let j = 0; j <= 12; j++) {
+      let gridCell = document.createElement('td');
+      gridCell.classList.add("canvas"+String(i)+String(j));
+      gridRow.appendChild(gridCell);
+      
+    }
+}
+}
+
+makeGrid(25, 25);
+
+// Upon user's submitting height and width selections, callback function (inside method) calls makeGrid function. But event method preventDefault() first intercepts the 'submit' event, which would normally submit the form and refresh the page, preventing makeGrid() from being processed
+sizePicker.addEventListener('submit', function(e) {
+  e.preventDefault();
+  makeGrid();
 });
 
 // Enables color dragging with selected color (code for filling in single cell is above). (No click on 'draw' mode needed; this is default mode)
-let down = false; 
-const kesu = document.getElementsByClassName("kesu");
-
-function tree(){
-  for(var i=0;i<18;i++){
-  kesu[i].style.backgroundColor="#f0f8ff";//same as the bgcolor
-  }
-}
-//クリックで色を変わらせるために、まず各tdに対してonmousedownで待つ。
-var tt = document.getElementById("canvas1");
-var eachtd = tt.querySelectorAll(":scope > tbody > tr > td");
-
-
-for(var i=0;i<eachtd.length;i++){
-eachtd[i].addEventListener('mousedown', function() {
-    const color = document.querySelector('.color-picker').value;
-    this.style.backgroundColor = color;
-    tree();
-    })
-    
-  }
-
-
+let down = false; // Tracks whether or not mouse pointer is pressed
 
 // Listens for mouse pointer press and release on grid. Changes value to true when pressed, but sets it back to false as soon as released
 pixelCanvas.addEventListener('mousedown', function(e) {
@@ -81,7 +46,6 @@ pixelCanvas.addEventListener('mousedown', function(e) {
   // Ensures cells won't be colored if grid is left while pointer is held down
   pixelCanvas.addEventListener('mouseleave', function() {
     down = false;
-    tree();
   });
 
   pixelCanvas.addEventListener('mouseover', function(e) {
@@ -92,7 +56,6 @@ pixelCanvas.addEventListener('mousedown', function(e) {
       // 'TD' capitalized because element.tagName returns upper case for DOM trees that represent HTML elements
       if (e.target.tagName === 'TD') {
       	e.target.style.backgroundColor = color;
-        tree();
       }
     }
   });
@@ -103,14 +66,15 @@ quickFill.addEventListener('click', function(e) {
   e.preventDefault();
   const color = document.querySelector('.color-picker').value;
   pixelCanvas.querySelectorAll('td').forEach(td => td.style.backgroundColor = color);
-  //done const) var kesu = document.getElementsByClassName("kesu");
-  for(var i=0;i<18;i++){
-  kesu[i].style.backgroundColor="#f0f8ff";//same as the bgcolor
-  }
 });
 
+// Removes color from cell upon double-click
+pixelCanvas.addEventListener('dblclick', e => {
+  e.target.style.backgroundColor = null;
+});
 
 // NONDEFAULT DRAW AND ERASE MODES:
+
 // Allows for drag and single-cell erasing upon clicking 'erase' button. Code for double-click erase functionality (Without entering erase mode) is above. Also note 'down' was set to false in variable above
 eraseMode.addEventListener('click', function() {
   // Enables drag erasing while in erase mode
@@ -164,70 +128,5 @@ drawMode.addEventListener('click', function() {
     if (e.target.tagName !== 'TD') return;
     const color = document.querySelector('.color-picker').value;
     e.target.style.backgroundColor = color;
-    tree();
   });
-
 });
-
-
-
-    </script>
-
-	<a onclick="execPost('{% url goto %}');return false;" href="{% url goto %}">POST送信</a>
-<script>
-
-function execPost(action, data) {
- var tt = document.getElementById("canvas1");
- var eachtd = tt.querySelectorAll(":scope > tbody > tr > td");
- // フォームの生成
- var form = document.createElement("form");
- form.setAttribute("action", action);
- form.setAttribute("method", "post");
- form.insertAdjacentHTML('afterbegin', '{% csrf_token %}');
- 
- form.style.display = "none";
- document.body.appendChild(form);
-
- // パラメタの設定
-/*
-var data = []
-if(eachtd[9].style.backgroundColor === ""){
-	data.push("rgb(no color)");
-}else{
-	data.push(eachtd[9].style.backgroundColor);
-}
-
-if(eachtd[10].style.backgroundColor === ""){
-	data.push("no color");
-}else{
-	data.push(eachtd[10].style.backgroundColor);
-}
-
-for(let i=20 ;i<112;i++){
-	if(eachtd[str(i)].style.backgroundColor === ""){
-		data.push("no color");
-	}else{
-		data.push(eachtd[str(i)].style.backgroundColor);
-	}
-}
-*/
-data.push("yesyes")
-for (var i in data) {
-   var input = document.createElement('input');
-   input.setAttribute('type', 'hidden');
-   input.setAttribute('name', i);
-   input.setAttribute('value', data[i]);
-   form.appendChild(input);
-  }
- // submit
- form.submit();
-}
-
-
-    </script>
-  </body>
-  <footer>
-    <small>(C)2019 DODEKAMIN.</small>
-  </footer>
-
-  </html>
