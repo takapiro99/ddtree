@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import json
-from django.http.response import JsonResponse
+from django.http.response import JsonResponse, HttpResponse
+from django.http import QueryDict, HttpRequest
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 @ensure_csrf_cookie
@@ -9,8 +10,47 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 
 def index(request):
     if request.method=="GET":
-        params={"title":"ddtree"}
+        params={
+            "title":"ddtree",
+            "goto": "table",
+            "goto2": "canvas",
+        }
         return render(request, "index.html", params)
+
+
+def table(request):
+    if request.method=="GET":
+        params={
+            "title":"ddtree",
+            "goto": "posttest",
+        }
+        return render(request, "table.html", params)
+
+def canvas(request):
+    if request.method=="GET":
+        params={
+            "title":"ddtree",
+            "goto": "posttest",
+        }
+        return render(request, "canvasing.html", params)
+
+@ensure_csrf_cookie
+def posttest(request):
+    if request.method == 'GET':
+        return HttpResponse("you've http getted to this page")
+    if request.method =='post':
+        print("posted")
+        aa="your data is :<br>"
+        for i in range(len(request.POST)-1):
+            aaa = request.POST[str(i)]
+            color = aaa.replace("rgb","")
+            aa+="<br>"
+            aa+=color
+        #ここにJSONを整えてDBにいれとく
+        #成功したよ。か、失敗したよ。を返す。
+        #aa=json.dumps(aa)
+            #json_lines = [ json.loads(s) for s in str(request.body) if s != "" ]
+        return HttpResponse(aa)
 
 def posted(request):
     if request.method =="POST":
