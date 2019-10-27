@@ -13,6 +13,8 @@ from .models import Tree
 #post
 #waitinglist
 
+
+
 def tree(request):
     params={
             "title":"ddtree",
@@ -78,7 +80,6 @@ def index(request):
             "title":"ddtree",
             "goto": "table",
             "goto2": "canvas",
-            ""
         }
         return render(request, "index.html", params)
     else:
@@ -101,29 +102,49 @@ def canvas(request):
         }
         return render(request, "canvasing.html", params)
 
+def hex2rgb(value):
+    value = value.lstrip('#')
+    lv = len(value)
+    return tuple(int(value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
+
 def posttest(request):
     if request.method == 'GET':
         return HttpResponse("you've http getted to this page")
     if request.method =='POST':
-        
         print("posted")
-        aa = "<style>body{margin:100px;}</style>"
-        aa+="your data is :<br><small>"
-        aa=""
-        for i in range(len(request.POST)-1):
-            aaa = request.POST[str(i)]
-            color = aaa.replace("rgb","")
-            color = aaa.replace("#","0x")
-            aa+="\r"
-            aa+=color
-        if len(aa)!=837:
-            return HttpResponse("data unproperly sent. please post it again.")
-        else:
-            treedata = Tree(data=aa, name="testname", look=2)
-            treedata.save()
-            print("record has created!")
-            return HttpResponse(aa)
-
+        bb = ""
+        for i in range(93):
+            aa = hex2rgb(str(request.POST[str(i)]))
+            ss = list(aa)
+            for i in range(3):
+               ss[i]=str(ss[i])
+            for i in range(3):
+                if (len(ss[i]))==1:
+                    ss[i]="00"+str(ss[i])
+                    break
+                if (len(ss[i]))==2:
+                    ss[i]="0"+str(ss[i])
+            
+            print(ss)
+            print("")
+            #aaa = "".join(map(str,aa))
+            #print(aaa)
+            bb += "".join(map(str,ss))
+            bb += " "
+        print(bb)
+            #bb += "\r"
+            #aa+=color
+        #if len(aa)!=837:
+            #return HttpResponse("data unproperly sent. please post it again.")
+        #else:
+        name = request.POST["name"]
+        category = request.POST["category"]
+        treedata = Tree(data=bb, name=name, look=category)
+        treedata.save()
+        print("record has created!")
+        print(str(request.POST["name"]))
+        print(str(request.POST["category"]))
+        return HttpResponse(bb)
 
 
 
@@ -135,23 +156,45 @@ def posted(request):
         params={a:1}
         return render(request, "done.html", params)
 
+
+
 def esp(request):
     if request.method == "GET":
+        if (Tree.objects.filter(lighted=False).order_by("date")):
+            ss =  Tree.objects.filter(lighted=False).order_by("date").first()
+            sss = ss.data
+            ww = ""
+            n = 0
+            for i in range(93):
+                ww += sss[n]
+                ww += sss[n+1]
+                ww += sss[n+2]
+                n += 3
+                ww += "\r"
+            #print((Tree.objects.filter(lighted=False).order_by("date").first()).data)
+            return HttpResponse(ww)
+        else:
+            ss = Tree.objects.order_by("?").first()
+            #ss = Tree.objects.order_by('?')[:1]
+            print(ss.data+"bb")
+            #data2 = Tree.objects.filter(lighted=False).order_by('date')
+            return HttpResponse(ss.data)
         #params={a:1,b:2}
         #ret={"1":"#ffff00","2":"#ffa500"}
-        ret=""
-        for j in range(93):
-        #    ret+="#00ff00"
+        #str(Tree.objects.all().count()
+        #ret=""
+        #for j in range(93):
+        ##    ret+="#00ff00"
+        ##    ret+='\r'            
+        #    ret+="0"
         #    ret+='\r'            
-            ret+="000"
-            ret+='\r'            
-            ret+="255"
-            ret+='\r'
-            ret+="000"
-            ret+='\r'
-            j += 1
-        #ret="#ff0000"+"\r"+"#123456"+"\r"+"#098123"+"\r"+"#098654"
-        return  HttpResponse(ret)   
+        #    ret+="255"
+        #    ret+='\r'
+        #    ret+="0"
+        #    ret+='\r'
+        #    j += 1
+        ##ret="#ff0000"+"\r"+"#123456"+"\r"+"#098123"+"\r"+"#098654"
+        #return  HttpResponse(ret)   
 
 def stats(request):
     if request.method == "GET":

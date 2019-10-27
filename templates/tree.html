@@ -38,8 +38,11 @@
 
 			<div id="wrap1">
 					<div class="inputs">
+<<<<<<< HEAD
+						
+=======
 						<label class="control-label">ツリー名</label>
-						<input type="text" id="name" class="form-control" value="" placeholder="ツリーの名前を入力">
+						<input type="text" id="name" class="form-control" value="" placeholder="ツリーの名前を入力" maxlength="20" required>
 						<div class="form-group">
 							<label for="inputState">カテゴリ</label>
 							<select class="form-control" id="category">
@@ -51,6 +54,7 @@
 								<option value="6">文字</option>
 							</select>
 						</div>
+>>>>>>> 08328e64ae87f8412f7c156d00a3d1126240e36b
 						<!-- <p>カテゴリ</p>
 						<select id="category" size="6">
 							<option value="1">かわいい</option>
@@ -65,10 +69,25 @@
 						<input type="button" id="erase-mode" value="消しゴム" class="btn page-link text-dark d-inline-block">
 						<h4>色選択</h4>
 						<input type="color" class="color-picker" value="#6aa5b8" id="takeda"><br>
-						<input type="button" value="塗りつぶし" class="btn page-link text-dark d-inline-block">
+						<input type="button" value="塗りつぶし" class="btn page-link text-dark d-inline-block" onclick="yamada()">
+						<input type="button" value="テンプレート１" class="btn page-link text-dark d-inline-block" onclick="template1()">
 						<input type="button" id="undo" value="1つ前の状態に戻す" class="btn page-link text-dark d-inline-block">
-						<button onclick="colorinfos();execPost();return false;" class="btn btn-outline-success">POSTする</button>
+						<button onclick="colorinfos();execPost();return false;" class="btn btn-outline-success">送信</button>
 						<input type="button" id="clear" value="消去" class="btn btn-outline-danger">
+                      <br>
+                      <label class="control-label">ツリー名</label>
+						<input type="text" id="name" class="form-control" value="" placeholder="ツリーの名前を入力">
+						<div class="form-group">
+							<label for="inputState">カテゴリ</label>
+							<select class="form-control" id="category">
+								<option value="1" selected>かわいい</option>
+								<option value="2">かっこいい</option>
+								<option value="3">おもしろい</option>
+								<option value="4">おしゃれ</option>
+								<option value="5">映え</option>
+								<option value="6">文字</option>
+							</select>
+						</div>
 						<p>＊白のマスは白に点灯します。<br>＊黒は消灯です。</p>
 					</div>
               
@@ -345,22 +364,23 @@
 			function colorinfos() {
 				colorinfo = [];
 				for (let i = 0; i < 12; i++) {
-					let xx = eachwidthhalf * rowstart0[i] + 6;
+					let xx = eachwidthhalf * rowstart0[i] + 14;
 					for (let j = 0; j < cells[i]; j++) {
-						let dd = c.getImageData(xx, eachheight * i + 6, 1, 1);
+						//console.log(xx,(eachheight * i )+ 14 );
+						let dd = c.getImageData(xx, (eachheight * i )+ 14 , 1, 1);
 						let ddd = Array.from(dd.data);
 						//console.log(xx,eachheight*i+6)
 						xx += eachwidthhalf * 2;
-						colorinfo.push(rgb2hex(ddd));
+						colorinfo.push(ddd);
 
 					}
 				}
 				//console.log(colorinfo);
 			}
 		</script>
-		
+		<form id="colorpost" action="/posttest" method="POST">{% csrf_token %}</form>
 		<script>
-			//script to post 
+			//script to post
 			function execPost() {
 				// フォームの生成
 				form = document.getElementById("colorpost");
@@ -399,7 +419,6 @@
 				input.setAttribute('name', name);
 				input.setAttribute('value', value);
 				form.appendChild(input);
-				return form;
 			}
 
 			function template1() {
@@ -496,6 +515,12 @@
 				fill[90]("white");
 				fill[91]("white");
 				fill[92]("white");
+			}
+
+			function yamada() {
+				for(var i=0; i < 93; i++){
+					fill[i](document.getElementById("takeda").value);
+				};
 			}
 		</script>
 		<script src="../static/js/snowstorm.js"></script>

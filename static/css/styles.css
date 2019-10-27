@@ -243,6 +243,11 @@ footer small {
   text-align:auto;
 }
 
+p{
+  margin-top:300px;
+  font-size:20px;
+}
+
 
 /*tree table
 ----------------------------------------*/
@@ -281,10 +286,9 @@ footer small {
   }
   
   .color-picker {
-      border: 1px solid #dcdcdc;
+    border: 1px solid #dcdcdc;
     -webkit-appearance: none;
     padding: 0;
-    border: none;
     border-radius: 10px;
     width: 20px;
     height: 20px;
@@ -314,11 +318,10 @@ footer small {
     top:200px;
     border-radius: 7px;
     border: 1px solid #dcdcdc;
-    padding-left: 2em;
+    padding-left: 1em;
     padding-bottom: 1.5em;
-    width: 200px;
+    width: 210px;
     background-color : white;
-    
   }
 
 .miki{
@@ -332,13 +335,13 @@ footer small {
 .dodai{
   width: 120px;
   border-top: 80px solid orange;
-  border-left: 20px solid transparent;   
+  border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   height: 0;
   border-radius: 26px 26px 6 6 / 80px 80px 6 6;
   margin:auto;
   position:fixed;
-  left:787px;
+  left:807px;
   top:650px;
 }
 .star{
@@ -347,8 +350,68 @@ footer small {
   width:160px;
   top:130px;
   left:795px;
+  z-index:-1000;
 }
 
+@media screen and (max-width:600px){
+  body{
+    width:auto;
+  }
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> 08328e64ae87f8412f7c156d00a3d1126240e36b
+  header{
+    width:auto;
+  }
+  .logo img{
+    width:100%;
+  } 
+  #tree{
+  background-image: url(../images/kira.jpg);
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+  .inputs{
+    margin-top:80px;
+    position:absolute;
+    left:85px;
+    float:none;
+    
+  }
+  .canvas1{
+    position:absolute;
+    left:25;
+    top:800px;
+  }
+  #wrap1{
+    height:200vh;
+    width:auto;
+  }
+  .star{
+    position:absolute;
+    top:820px;
+    left:120px;
+    z-index:-1000;
+  }
+  small{
+     display:none;
+  }
+  .miki{
+    position:absolute;
+    top:1303px;
+    left:155px;
+  }
+  .dodai{
+    position:absolute;
+    top:1380px;
+    left:133px;
+  }
+<<<<<<< HEAD
+}
 
   
+=======
+}
+>>>>>>> 08328e64ae87f8412f7c156d00a3d1126240e36b
