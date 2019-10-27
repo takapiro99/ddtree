@@ -186,6 +186,7 @@ footer small {
 
 #index{
   background-image: url(../images/bg.png);
+  background-size: cover;
 }
 
 .bg{
@@ -223,11 +224,8 @@ footer small {
 }
 
 #tree{
-  background-image: url(../images/kawaii.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center top;
-  background-size: 100% auto;
+  background-image: url(../images/treebg.png);
+  background-size: cover;
 }
 
 #wrap1{
@@ -238,23 +236,19 @@ footer small {
 }
 
 #about{
-  background-image: url(../images/kazari.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center top;
+  background-image: url(../images/aboutbg.png);
   background-size: cover;
-  object-position:100% auto;
 }
 
 #waiting{
-  background-image: url(../images/kirakira.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center top;
+  background-image: url(../images/waitingbg.png);
   background-size: cover;
-  object-position:100% auto;
 }
 
+#post {
+  background-image: url(../images/submit.png);
+  background-size: cover;
+}
 
 #wrap3{
   margin-top:100px;
