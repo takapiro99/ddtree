@@ -21,9 +21,9 @@ from . import views
 urlpatterns = [
     #path('admin/', admin.site.urls),
     path("", views.index, name="index"),
-    path("posttest/", views.posttest, name="posttest"),
-    path("table/",views.table,name="table"),
-    path("canvas/",views.canvas,name="canvas"),
+    path("posttest", views.posttest, name="posttest"),
+    path("table",views.table,name="table"),
+    path("canvas",views.canvas,name="canvas"),
     path("esp/",views.esp,name="esp"),
 
     path("tree",views.tree, name="tree"),
