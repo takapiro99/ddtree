@@ -6,15 +6,6 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from .models import Tree
 
 @ensure_csrf_cookie
-# Create your views here.
-#index
-#tree
-#about
-#post
-#waitinglist
-
-
-
 def tree(request):
     params={
             "title":"ddtree",
@@ -71,9 +62,6 @@ def waitinglist(request):
     print(loook)
     return render(request,"waitinglist.html",params)
 
-
-
-
 def index(request):
     if request.method=="GET":
         params={
@@ -84,28 +72,6 @@ def index(request):
         return render(request, "index.html", params)
     else:
         return HttpResponse("please get to this page")
-
-
-def table(request):
-    if request.method=="GET":
-        params={
-            "title":"ddtree",
-            "goto": "posttest",
-        }
-        return render(request, "table.html", params)
-
-def canvas(request):
-    if request.method=="GET":
-        params={
-            "title":"ddtree",
-            "goto": "posttest",
-        }
-        return render(request, "canvasing.html", params)
-
-def hex2rgb(value):
-    value = value.lstrip('#')
-    lv = len(value)
-    return tuple(int(value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
 
 def posttest(request):
     if request.method == 'GET':
@@ -125,12 +91,12 @@ def posttest(request):
                 if (len(ss[i]))==2:
                     ss[i]="0"+str(ss[i])
             
-            print(ss)
-            print("")
+            #print(ss)
+            #print("")
             #aaa = "".join(map(str,aa))
             #print(aaa)
             bb += "".join(map(str,ss))
-            bb += " "
+            #bb += " "
         print(bb)
             #bb += "\r"
             #aa+=color
@@ -146,59 +112,74 @@ def posttest(request):
         print(str(request.POST["category"]))
         return HttpResponse(bb)
 
-
-
-
-def posted(request):
-    if request.method =="POST":
-        a="aa"
-        
-        params={a:1}
-        return render(request, "done.html", params)
-
-
-
 def esp(request):
     if request.method == "GET":
         if (Tree.objects.filter(lighted=False).order_by("date")):
             ss =  Tree.objects.filter(lighted=False).order_by("date").first()
+            treedata = Tree(lighted=True)
+            treedata.save()
+            sss=""
             sss = ss.data
+            #ssss=
             ww = ""
             n = 0
             for i in range(93):
-                ww += sss[n]
-                ww += sss[n+1]
-                ww += sss[n+2]
-                n += 3
+                rr=""
+                bb=""
+                gg=""
+                rr += sss[n]
+                rr += sss[n+1]
+                rr += sss[n+2]
+                bb += sss[n+3]
+                bb += sss[n+4]
+                bb += sss[n+5]
+                gg += sss[n+6]
+                gg += sss[n+7]
+                gg += sss[n+8]
+                ww += gg
                 ww += "\r"
+                ww += rr
+                ww += "\r"
+                ww += bb
+
+                n += 9
+                ww += "\r"
+            print(ss.name)
+
             #print((Tree.objects.filter(lighted=False).order_by("date").first()).data)
             return HttpResponse(ww)
         else:
             ss = Tree.objects.order_by("?").first()
-            #ss = Tree.objects.order_by('?')[:1]
-            print(ss.data+"bb")
-            #data2 = Tree.objects.filter(lighted=False).order_by('date')
-            return HttpResponse(ss.data)
-        #params={a:1,b:2}
-        #ret={"1":"#ffff00","2":"#ffa500"}
-        #str(Tree.objects.all().count()
-        #ret=""
-        #for j in range(93):
-        ##    ret+="#00ff00"
-        ##    ret+='\r'            
-        #    ret+="0"
-        #    ret+='\r'            
-        #    ret+="255"
-        #    ret+='\r'
-        #    ret+="0"
-        #    ret+='\r'
-        #    j += 1
-        ##ret="#ff0000"+"\r"+"#123456"+"\r"+"#098123"+"\r"+"#098654"
-        #return  HttpResponse(ret)   
+            sss=""
+            sss = ss.data
+            for i in range(80):
+                sss+=("00000000000000000000000000000000000000000000")
+            #ssss=
+            ww = ""
+            n = 0
+            for i in range(93):
+                rr=""
+                bb=""
+                gg=""
+                rr += sss[n]
+                rr += sss[n+1]
+                rr += sss[n+2]
+                bb += sss[n+3]
+                bb+= sss[n+4]
+                bb+= sss[n+5]
+                gg += sss[n+6]
+                gg += sss[n+7]
+                gg += sss[n+8]
+                ww += gg
+                ww += "\r"
+                ww += rr
+                ww += "\r"
+                ww += bb
 
-def stats(request):
-    if request.method == "GET":
-        return render(request, "stats.html")
+                n += 9
+                ww += "\r"
+            print(ss.date)
+            return HttpResponse(ww)
 
 
 
