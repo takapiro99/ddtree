@@ -39,7 +39,7 @@ def waitinglist(request):
             "title":"ddtree",
             "goto": "table",
             "goto2": "canvas",}
-    return render(request,"waitinglist.html",params)
+    return render(request,"waiting.html",params)
 
 
 
