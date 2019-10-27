@@ -39,7 +39,7 @@
 			<div id="wrap1">
 					<div class="inputs">
 						<label class="control-label">ツリー名</label>
-						<input type="text" id="name" class="form-control" value="" placeholder="ツリーの名前を入力">
+						<input type="text" id="name" class="form-control" value="" placeholder="ツリーの名前を入力" maxlength="20" required>
 						<div class="form-group">
 							<label for="inputState">カテゴリ</label>
 							<select class="form-control" id="category">
@@ -65,7 +65,7 @@
 						<input type="button" id="erase-mode" value="消しゴム" class="btn page-link text-dark d-inline-block">
 						<h4>色選択</h4>
 						<input type="color" class="color-picker" value="#6aa5b8" id="takeda"><br>
-						<input type="button" value="塗りつぶし" class="btn page-link text-dark d-inline-block">
+						<input type="button" value="塗りつぶし" class="btn page-link text-dark d-inline-block" onclick="yamada()">
 						<input type="button" id="undo" value="1つ前の状態に戻す" class="btn page-link text-dark d-inline-block">
 						<button onclick="colorinfos();execPost();return false;" class="btn btn-outline-success">POSTする</button>
 						<input type="button" id="clear" value="消去" class="btn btn-outline-danger">
@@ -345,9 +345,9 @@
 			function colorinfos() {
 				colorinfo = [];
 				for (let i = 0; i < 12; i++) {
-					let xx = eachwidthhalf * rowstart0[i] + 6;
+					let xx = 2 * eachwidthhalf * rowstart0[i] ;
 					for (let j = 0; j < cells[i]; j++) {
-						let dd = c.getImageData(xx, eachheight * i + 6, 1, 1);
+						let dd = c.getImageData(xx, (eachheight * i )+eachwidthhalf/2 , 1, 1);
 						let ddd = Array.from(dd.data);
 						//console.log(xx,eachheight*i+6)
 						xx += eachwidthhalf * 2;
@@ -399,7 +399,6 @@
 				input.setAttribute('name', name);
 				input.setAttribute('value', value);
 				form.appendChild(input);
-				return form;
 			}
 
 			function template1() {
@@ -496,6 +495,12 @@
 				fill[90]("white");
 				fill[91]("white");
 				fill[92]("white");
+			}
+
+			function yamada() {
+				for(int i=0; i < 93; i++){
+					fill[i](document.)
+				}
 			}
 		</script>
 		<script src="../static/js/snowstorm.js"></script>
