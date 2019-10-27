@@ -6,9 +6,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<title>Tree｜みんなのツリー</title>
-		<link href="css/styles.css" rel="stylesheet">
+		<link href="../static/css/styles.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Helvetica">
-		<link href="images/favicon-2.ico" rel="icon">
+		<link href="../static/images/favicon-2.ico" rel="icon">
 		<script>
 			const mycanvaswidth = 336; //canvasの横幅
 			const mycanvasheight = 360; //canvasの高さ
@@ -20,7 +20,7 @@
 		<div class="bg">
 			<header>
 				<div class="logo">
-					<a href="/index"><img src="images/logo.png" alt="DODEKAMINTREE"></a>
+					<a href="/index"><img src="../static/images/logo.png" alt="DODEKAMINTREE"></a>
 				</div>
 				<nav>
 					<ul class="global-nav">
@@ -343,7 +343,7 @@
 				//console.log(colorinfo);
 			}
 		</script>
-		<form id="colorpost" action="/post" method="POST">{% csrf_token %}</form>
+		<form id="colorpost" action="/posttest/" method="POST">{% csrf_token %}</form>
 		<script>
 			//script to post 
 			function execPost() {
@@ -482,7 +482,7 @@
 				fill[92]("white");
 			}
 		</script>
-		<script src="js/snowstorm.js"></script>
+		<script src="../static/js/snowstorm.js"></script>
 	</body>
 	<footer>
 		<small>(C)2019 TEAM DODEKAMIN.</small>
