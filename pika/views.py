@@ -78,7 +78,6 @@ def index(request):
             "title":"ddtree",
             "goto": "table",
             "goto2": "canvas",
-            ""
         }
         return render(request, "index.html", params)
     else:
