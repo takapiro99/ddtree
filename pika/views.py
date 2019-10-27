@@ -105,7 +105,7 @@ def canvas(request):
 def hex2rgb(value):
     value = value.lstrip('#')
     lv = len(value)
-    return str((value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
+    return tuple(int(value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
 
 def posttest(request):
     if request.method == 'GET':
@@ -114,12 +114,24 @@ def posttest(request):
         print("posted")
         bb = ""
         for i in range(93):
-            aa = hex2rgb(request.POST[str(i)])
-            #color = aaa.replace("rgb","")
-            #color = aaa.replace("#","0x")
+            aa = hex2rgb(str(request.POST[str(i)]))
+            ss = list(aa)
+            for i in range(3):
+               ss[i]=str(ss[i])
+            for i in range(3):
+                if (len(ss[i]))==1:
+                    ss[i]="00"+str(ss[i])
+                    break
+                if (len(ss[i]))==2:
+                    ss[i]="0"+str(ss[i])
             
-            for i in aa:
-                bb += str(i)
+            print(ss)
+            print("")
+            #aaa = "".join(map(str,aa))
+            #print(aaa)
+            bb += "".join(map(str,ss))
+            bb += " "
+        print(bb)
             #bb += "\r"
             #aa+=color
         #if len(aa)!=837:
@@ -132,7 +144,7 @@ def posttest(request):
         print("record has created!")
         print(str(request.POST["name"]))
         print(str(request.POST["category"]))
-        return HttpResponse("楽しみだね！")
+        return HttpResponse(bb)
 
 
 
@@ -150,8 +162,17 @@ def esp(request):
     if request.method == "GET":
         if (Tree.objects.filter(lighted=False).order_by("date")):
             ss =  Tree.objects.filter(lighted=False).order_by("date").first()
-            print((Tree.objects.filter(lighted=False).order_by("date").first()).data)
-            return HttpResponse(str(Tree.objects.filter(lighted=False).order_by("date").first().data))
+            sss = ss.data
+            ww = ""
+            n = 0
+            for i in range(93):
+                ww += sss[n]
+                ww += sss[n+1]
+                ww += sss[n+2]
+                n += 3
+                ww += "\r"
+            #print((Tree.objects.filter(lighted=False).order_by("date").first()).data)
+            return HttpResponse(ww)
         else:
             ss = Tree.objects.order_by("?").first()
             #ss = Tree.objects.order_by('?')[:1]
