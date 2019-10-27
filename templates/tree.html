@@ -359,9 +359,9 @@
 				//console.log(colorinfo);
 			}
 		</script>
-		<form id="colorpost" action="post.html" method="POST">{% csrf_token %}</form>
+		<form id="colorpost" action="/posttest" method="POST">{% csrf_token %}</form>
 		<script>
-			//script to post 
+			//script to post
 			function execPost() {
 				// フォームの生成
 				form = document.getElementById("colorpost");
