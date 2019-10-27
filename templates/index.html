@@ -12,26 +12,29 @@
     <div class="bg">
       <header>
         <div class="logo">
-          <a href="/"><img src="../static/images/project.png" alt="DODEKAMINTREE"></a>
+          <a href="/"><img src="../static/images/logo.png" alt="DODEKAMINTREE"></a>
         </div>
         <nav>
           <ul class="global-nav">
-            <li><a href="/about">AboutProject</a></li>
+            <li><a href="/" class="now">Home</a></li>
+            <li><a href="/about">About</a></li>
             <li><a href="/tree">Tree</a></li>
-            <li><a href="/waitinglist">WaitingList</a></li>
+            <li><a href="/waitinglist">Waiting List</a></li>
           </ul>
         </nav>
       </header>
 
       <div id="wrap">
         <div class="content">
-          <h1>なんか書く</h1>
-          <p>なんか書く</p>
+          <h2>北広島×Tech</h2>
+    <p>クリスマスツリーを自分の好きなように光らせたい！<br>
+      　という思いから始まったプロジェクトです。<br>
+        自分で作ったデザインを送信すると、ツリーが光ります。<br>
+        ツリーをキャンバスにして自分だけのツリーを作ろう！
+    </p>
           <p class="btn"><a href="/tree">さっそくツリーを作る</a></p>
         </div>
       </div>
-
-
     </div>
     <script src="../static/js/snowstorm.js"></script>
     <script>
@@ -60,15 +63,12 @@
       //クリックで色を変わらせるために、まず各tdに対してonmousedownで待つ。
       var tt = document.getElementById("canvas1");
       var eachtd = tt.querySelectorAll(":scope > tbody > tr > td");
-
-
       for (var i = 0; i < eachtd.length; i++) {
         eachtd[i].addEventListener('mousedown', function () {
           const color = document.querySelector('.color-picker').value;
           this.style.backgroundColor = color;
           tree();
         })
-
       }
 
 

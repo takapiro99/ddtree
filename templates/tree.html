@@ -24,20 +24,19 @@
 		<div class="bg">
 			<header>
 				<div class="logo">
-					<a href="/"><img src="../static/images/logo.png" alt="DODEKAMINTREE"></a>
+					<a href="/"><img src="../static/images/logo.png" ></a>
 				</div>
 				<nav>
 					<ul class="global-nav">
-						<li><a href="/about">AboutProject</a></li>
-						<li><a href="/tree">Tree</a></li>
-						<li><a href="/waitinglist">WaitingList</a></li>
+                        <li><a href="/">Home</a></li>
+						<li><a href="/about">About</a></li>
+						<li><a href="/tree"　class="now">Tree</a></li>
+						<li><a href="/waitinglist">Waiting List</a></li>
 					</ul>
 				</nav>
 			</header>
 
 			<div id="wrap1">
-
-				<div class="row">
 					<div class="inputs">
 						<label class="control-label">ツリー名</label>
 						<input type="text" id="name" class="form-control" value="" placeholder="ツリーの名前を入力">
@@ -72,16 +71,16 @@
 						<input type="button" id="clear" value="消去" class="btn btn-outline-danger">
 						<p>＊白のマスは白に点灯します。<br>＊黒は消灯です。</p>
 					</div>
+              
 					<div class="canvas1">
 						<canvas class="mycanvas" id="mycanvas">残念ながらHTML5に対応していません</canvas>
 					</div>
+                    <img src="../static/images/star.png" class="star"></div>
 					<div style=background-color:saddlebrown; class="miki"></div>
 					<div class="dodai"></div>
 				</div>
+              
 
-			</div>
-
-		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script>
 			function quantize(xx, yy) {
@@ -359,7 +358,7 @@
 				//console.log(colorinfo);
 			}
 		</script>
-		<form id="colorpost" action="/posttest/" method="POST">{% csrf_token %}</form>
+		
 		<script>
 			//script to post 
 			function execPost() {

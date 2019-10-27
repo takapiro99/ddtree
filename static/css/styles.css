@@ -7,6 +7,9 @@ body {
   text-align: center;
   font-family: Arial;
 }
+li .now{
+  border-bottom: double 4px white; 
+}
 
 p,h1,h2,h3,h4,h5,h6 {
   margin-top: 0;
@@ -23,7 +26,6 @@ ul {
 
 h1 {
   font-size: 36px;
-  border-bottom: 1px solid white;
 }
 
 h2 {
@@ -88,7 +90,7 @@ a img:hover {
 ----------------------------------------*/
 
  header {
-  width: 960px;
+  width: 85%;
   height: 100px;
   margin: 0 auto;
 }
@@ -96,7 +98,7 @@ a img:hover {
 .logo img {
   float:left;
   width:400px;;
-  margin:40px 10px;
+  margin:40px 0px;
 }
 
 .global-nav {
@@ -107,7 +109,7 @@ a img:hover {
 .global-nav li {
   font-size: 20px;
   float: left;
-  margin: 0 10px;
+  margin: 0 15px;
   list-style: none;
 }
 
@@ -144,41 +146,22 @@ a img:hover {
   margin: 0 10px;
 }
 
-.sidebar {
-  float: right;
-  width: 200px;
-  margin: 0 10px 0 30px;
-}
+.
 
-.sidebar h2 {
-  margin-bottom: 10px;
-}
-
-.sidebar ul {
-  font-size: 16px;
-  margin-left: 20px;
-}
-
-.sidebar ul a {
-  color: #333333;
-}
 
 section {
   margin-bottom: 35px;
 }
 
 footer {
-  padding:20px;
   text-align: center;
-  background-color: #767671;
   position:fixed;
-  width:100%;
-  margin-top:-75px;
+  
 }
 
 footer small {
   font-size: 20px;
-  color: #ffffff;
+  color:white;
 }
 
 /* index.htmlへの指定
@@ -226,14 +209,12 @@ footer small {
 #tree{
   background-image: url(../images/treebg.png);
   background-size: cover;
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-attachment: fixed;
 }
 
-#wrap1{
-  margin-top:100px;
-  background-color: white;
-  height:400px;
-  width:100%;
-}
+
 
 #about{
   background-image: url(../images/aboutbg.png);
@@ -257,11 +238,9 @@ footer small {
   background-color: white;
 }
 
-#wrap4{
-  margin-top:100px;
-  height:600px;
-  width:100%;
-  background-color: white;
+.sousin{
+  margin-top:150px;
+  text-align:auto;
 }
 
 
@@ -324,31 +303,31 @@ footer small {
   }
   
 .canvas1{
-  margin-top:50px;
-  position:absolute;
-  left:450px
+  margin-top:140px;
+  left:700px;
+  position:fixed;
 }
 .inputs {
-    display:block;
     text-align: left;
-    margin-left: 100px;
-    margin-top:20px;
+    position:fixed;
+    left:150px;
+    top:200px;
     border-radius: 7px;
     border: 1px solid #dcdcdc;
     padding-left: 2em;
     padding-bottom: 1.5em;
     width: 200px;
     background-color : white;
-    position:fixed;
+    
   }
 
 .miki{
   margin-top:0px;
   width:80px;
   height:80px;
-  position:absolute;
-  left:580px;
-  top:613px;
+  position:fixed;
+  left:830px;
+  top:603px;
 }
 .dodai{
   width: 120px;
@@ -358,9 +337,16 @@ footer small {
   height: 0;
   border-radius: 26px 26px 6 6 / 80px 80px 6 6;
   margin:auto;
-  position:absolute;
-  left:540px;
-  top:670px;
+  position:fixed;
+  left:787px;
+  top:650px;
+}
+.star{
+  background-image:url("../static/images/star.png");
+  position:fixed;
+  width:160px;
+  top:130px;
+  left:795px;
 }
 
 
