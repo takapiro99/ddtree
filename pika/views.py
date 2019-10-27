@@ -28,10 +28,12 @@ def about(request):
     return render(request,"about.html",params)
 
 def post(request):
+    time = str(Tree.objects.filter(lighted=False).count())
     params={
             "title":"ddtree",
             "goto": "table",
-            "goto2": "canvas",}
+            "goto2": "canvas",
+            "time" :time}
     return render(request,"post.html",params)
 
 def waitinglist(request):
@@ -76,6 +78,7 @@ def index(request):
             "title":"ddtree",
             "goto": "table",
             "goto2": "canvas",
+            ""
         }
         return render(request, "index.html", params)
     else:
