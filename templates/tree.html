@@ -346,9 +346,10 @@
 			function colorinfos() {
 				colorinfo = [];
 				for (let i = 0; i < 12; i++) {
-					let xx = 2 * eachwidthhalf * rowstart0[i] ;
+					let xx = eachwidthhalf * rowstart0[i] + 14;
 					for (let j = 0; j < cells[i]; j++) {
-						let dd = c.getImageData(xx, (eachheight * i )+eachwidthhalf/2 , 1, 1);
+						//console.log(xx,(eachheight * i )+ 14 );
+						let dd = c.getImageData(xx, (eachheight * i )+ 14 , 1, 1);
 						let ddd = Array.from(dd.data);
 						//console.log(xx,eachheight*i+6)
 						xx += eachwidthhalf * 2;
