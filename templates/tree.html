@@ -20,7 +20,7 @@
 		<div class="bg">
 			<header>
 				<div class="logo">
-					<a href="index.html"><img src="images/logo.png" alt="DODEKAMINTREE"></a>
+					<a href="/index"><img src="images/logo.png" alt="DODEKAMINTREE"></a>
 				</div>
 				<nav>
 					<ul class="global-nav">
@@ -202,9 +202,7 @@
 						c.stroke();
 						//eachwidthhalf*2-cutr,
 						//eachheight-cutd);
-						//console.log("filled"+String(sums[i]+j)); //for development
-
-
+						//console.log("filled"+String(sums[i]+j)); //for developmentÏ
 
 					};
 
@@ -345,46 +343,48 @@
 				//console.log(colorinfo);
 			}
 		</script>
-		<form id="colorpost" action="post.html" method="POST">{% csrf_token %}</form>
+		<form id="colorpost" action="/post" method="POST">{% csrf_token %}</form>
 		<script>
 			//script to post 
 			function execPost() {
 				// フォームの生成
-				var form = document.getElementById("colorpost");
+				form = document.getElementById("colorpost");
 				form.style.display = "none";
 				document.body.appendChild(form);
 				// パラメタの設定
 				for (var i in colorinfo) {
-					var input = document.createElement('input');
-					input.setAttribute('type', 'hidden');
-					input.setAttribute('name', i);
-					input.setAttribute('value', colorinfo[i]);
-					form.appendChild(input);
+					// var input = document.createElement('input');
+					// input.setAttribute('type', 'hidden');
+					// input.setAttribute('name', i);
+					// input.setAttribute('value', colorinfo[i]);
+					// form.appendChild(input);
+					set(i,colorinfo[i]);
 				}
-				input = document.createElement('input');
-				input.setAttribute('type', 'hidden');
-				input.setAttribute('name', 'name');
-				input.setAttribute('value', document.getElementById("name").value);
-				form.appendChild(input);
+				// input = document.createElement('input');
+				// input.setAttribute('type', 'hidden');
+				// input.setAttribute('name', 'name');
+				// input.setAttribute('value', document.getElementById("name").value);
+				// form.appendChild(input);
 
-				input = document.createElement('input');
-				input.setAttribute('type', 'hidden');
-				input.setAttribute('name', 'category');
-				input.setAttribute('value', document.getElementById("category").value);
-				form.appendChild(input);
-				// set("name", document.getElementById("name").value);
-				// set("category", document.getElementById("category").value);
+				// input = document.createElement('input');
+				// input.setAttribute('type', 'hidden');
+				// input.setAttribute('name', 'category');
+				// input.setAttribute('value', document.getElementById("category").value);
+				// form.appendChild(input);
+				set("name", document.getElementById("name").value);
+				set("category", document.getElementById("category").value);
+				console.log(form);
 				// post
 				form.submit();
 			}
-			// function set(name,value) {
-			// 	var input = document.createElement('input');
-			// 	input.setAttribute('type', 'hidden');
-			// 	input.setAttribute('name', this.name);
-			// 	input.setAttribute('value', this.value);
-			// 	form.appendChild(input);
-			// 	return form;
-			// }
+			function set(name,value) {
+				var input = document.createElement('input');
+				input.setAttribute('type', 'hidden');
+				input.setAttribute('name', name);
+				input.setAttribute('value', value);
+				form.appendChild(input);
+				return form;
+			}
 
 			function template1() {
 				fill[0]("white");
