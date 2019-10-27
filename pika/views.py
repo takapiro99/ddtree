@@ -105,7 +105,7 @@ def canvas(request):
 def hex2rgb(value):
     value = value.lstrip('#')
     lv = len(value)
-    return tuple(int(value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
+    return str((value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
 
 def posttest(request):
     if request.method == 'GET':
@@ -120,7 +120,6 @@ def posttest(request):
             
             for i in aa:
                 bb += str(i)
-                bb += "\r"
             #bb += "\r"
             #aa+=color
         #if len(aa)!=837:
