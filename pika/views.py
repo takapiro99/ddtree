@@ -149,23 +149,32 @@ def posted(request):
 
 def esp(request):
     if request.method == "GET":
-        data2 = Tree.objects.filter(lighted=False).order_by('date')
+        if (Tree.objects.filter(lighted=False).order_by("date")):
+            ss =  Tree.objects.filter(lighted=False).order_by("date").first()
+            print((Tree.objects.filter(lighted=False).order_by("date").first()).data)
+            return HttpResponse(str(Tree.objects.filter(lighted=False).order_by("date").first().data))
+        else:
+            ss = Tree.objects.order_by("?").first()
+            #ss = Tree.objects.order_by('?')[:1]
+            print(ss.data+"bb")
+            #data2 = Tree.objects.filter(lighted=False).order_by('date')
+            return HttpResponse(ss.data)
         #params={a:1,b:2}
         #ret={"1":"#ffff00","2":"#ffa500"}
         #str(Tree.objects.all().count()
-        ret=""
-        for j in range(93):
-        #    ret+="#00ff00"
+        #ret=""
+        #for j in range(93):
+        ##    ret+="#00ff00"
+        ##    ret+='\r'            
+        #    ret+="0"
         #    ret+='\r'            
-            ret+="000"
-            ret+='\r'            
-            ret+="255"
-            ret+='\r'
-            ret+="000"
-            ret+='\r'
-            j += 1
-        #ret="#ff0000"+"\r"+"#123456"+"\r"+"#098123"+"\r"+"#098654"
-        return  HttpResponse(ret)   
+        #    ret+="255"
+        #    ret+='\r'
+        #    ret+="0"
+        #    ret+='\r'
+        #    j += 1
+        ##ret="#ff0000"+"\r"+"#123456"+"\r"+"#098123"+"\r"+"#098654"
+        #return  HttpResponse(ret)   
 
 def stats(request):
     if request.method == "GET":
