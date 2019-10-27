@@ -348,6 +348,58 @@ footer small {
   left:795px;
 }
 
+@media screen and (max-width:600px){
+  body{
+    width:100%
+  }
+ 
+  header{
+    width:auto;
+  }
+  .logo img{
+    width:100%;
+  } 
+  #tree{
+  background-image: url(../images/kira.jpg);
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+  .inputs{
+    margin-top:80px;
+    position:absolute;
+    left:85px;
+    float:none;
+    
+  }
+  .canvas1{
+    position:absolute;
+    left:25;
+    top:800px;
+  }
+  #wrap1{
+    height:180vh;
+    width:auto;
+  }
+  .star{
+    position:absolute;
+    top:820px;
+    left:120px;
+    z-index:-1000;
+  }
+  footer{
+     display:none;
+  }
+  .miki{
+    position:absolute;
+    top:1303px;
+    left:155px;
+  }
+  .dodai{
+    position:absolute;
+    top:1380px;
+    left:133px;
+  }
+}
 
 
   
