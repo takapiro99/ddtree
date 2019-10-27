@@ -28,18 +28,46 @@ def about(request):
     return render(request,"about.html",params)
 
 def post(request):
+    time = str(Tree.objects.filter(lighted=False).count())
     params={
             "title":"ddtree",
             "goto": "table",
-            "goto2": "canvas",}
+            "goto2": "canvas",
+            "time" :time}
     return render(request,"post.html",params)
 
 def waitinglist(request):
+    print(str(Tree.objects.all().count()) +"trees have been posted since.")
+    print(str(Tree.objects.filter(lighted=False).count())+" trees are not lighted yet.")
+    loook=[]
+    wlist = Tree.objects.filter(lighted=False).order_by('date')[:10]
+    print(wlist[0],wlist[1])
+    for i in range(10):
+        if wlist[i]==1:
+            a="かわいい"
+        if wlist[i]==2:
+            a="かっこいい"
+        if wlist[i]==3:
+            a="おもしろい"
+        if wlist[i]==4:
+            a="おしゃれ"
+        if wlist[i]==5:
+            a="映え"
+        if wlist[i]==6:
+            a="文字"
+        
+    #question = get_object_or_404(Question, pk=question_id)
+    
+    print(type(wlist))
+    print(wlist)
     params={
             "title":"ddtree",
             "goto": "table",
-            "goto2": "canvas",}
-    return render(request,"waiting.html",params)
+            "goto2": "canvas",
+            "wlist": wlist,
+            "loook": loook,}
+    print(loook)
+    return render(request,"waitinglist.html",params)
 
 
 
@@ -50,6 +78,7 @@ def index(request):
             "title":"ddtree",
             "goto": "table",
             "goto2": "canvas",
+            ""
         }
         return render(request, "index.html", params)
     else:
@@ -112,7 +141,13 @@ def esp(request):
         #ret={"1":"#ffff00","2":"#ffa500"}
         ret=""
         for j in range(93):
-            ret+="0x00ff00"
+        #    ret+="#00ff00"
+        #    ret+='\r'            
+            ret+="000"
+            ret+='\r'            
+            ret+="255"
+            ret+='\r'
+            ret+="000"
             ret+='\r'
             j += 1
         #ret="#ff0000"+"\r"+"#123456"+"\r"+"#098123"+"\r"+"#098654"
