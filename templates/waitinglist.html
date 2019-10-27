@@ -26,11 +26,12 @@
       <div id="wrap4">
         <div class="content">
 
-    <table>
+
+    <td>
     {% for wl in wlist %}
-         <tr>  <td>{{ wl.date }}</td> <td>{{ wl.look }}</td> <td>{{ wl.look }}</td></tr>
+        <tr>{{ wl.date }}</tr> <tr>{{ wl.name }}</tr> <tr>{{ wl.look }}</tr>
     {% endfor %}
-    </table>
+    </td>
 
         </div>
       </div>
