@@ -66,6 +66,7 @@
 						<h4>色選択</h4>
 						<input type="color" class="color-picker" value="#6aa5b8" id="takeda"><br>
 						<input type="button" value="塗りつぶし" class="btn page-link text-dark d-inline-block" onclick="yamada()">
+						<input type="button" value="テンプレート１" class="btn page-link text-dark d-inline-block" onclick="template1()">
 						<input type="button" id="undo" value="1つ前の状態に戻す" class="btn page-link text-dark d-inline-block">
 						<button onclick="colorinfos();execPost();return false;" class="btn btn-outline-success">POSTする</button>
 						<input type="button" id="clear" value="消去" class="btn btn-outline-danger">
@@ -358,7 +359,7 @@
 				//console.log(colorinfo);
 			}
 		</script>
-		
+		<form id="colorpost" action="post.html" method="POST">{% csrf_token %}</form>
 		<script>
 			//script to post 
 			function execPost() {
@@ -498,9 +499,9 @@
 			}
 
 			function yamada() {
-				for(int i=0; i < 93; i++){
-					fill[i](document.)
-				}
+				for(var i=0; i < 93; i++){
+					fill[i](document.getElementById("takeda").value);
+				};
 			}
 		</script>
 		<script src="../static/js/snowstorm.js"></script>
