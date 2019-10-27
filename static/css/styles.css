@@ -331,7 +331,7 @@ footer small {
 .dodai{
   width: 120px;
   border-top: 80px solid orange;
-  border-left: 20px solid transparent;   
+  border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   height: 0;
   border-radius: 26px 26px 6 6 / 80px 80px 6 6;
@@ -350,9 +350,9 @@ footer small {
 
 @media screen and (max-width:600px){
   body{
-    width:100%
+    width:auto;
   }
- 
+
   header{
     width:auto;
   }
@@ -377,7 +377,7 @@ footer small {
     top:800px;
   }
   #wrap1{
-    height:180vh;
+    height:200vh;
     width:auto;
   }
   .star{
@@ -386,7 +386,7 @@ footer small {
     left:120px;
     z-index:-1000;
   }
-  footer{
+  small{
      display:none;
   }
   .miki{
@@ -400,6 +400,3 @@ footer small {
     left:133px;
   }
 }
-
-
-  
