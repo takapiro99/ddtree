@@ -36,9 +36,6 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-
-=======
     <script src="../static/js/snowstorm.js"></script>
     <script>
       const clear = document.querySelector('.clearing');
@@ -66,15 +63,12 @@
       //クリックで色を変わらせるために、まず各tdに対してonmousedownで待つ。
       var tt = document.getElementById("canvas1");
       var eachtd = tt.querySelectorAll(":scope > tbody > tr > td");
-
-
       for (var i = 0; i < eachtd.length; i++) {
         eachtd[i].addEventListener('mousedown', function () {
           const color = document.querySelector('.color-picker').value;
           this.style.backgroundColor = color;
           tree();
         })
-
       }
 
 
@@ -226,7 +220,6 @@
         form.submit();
       }
     </script>
->>>>>>> c2068e50471a7f2c39df464867c94ab4be7e38e4
   </body>
   <footer>
     <small>(C)2019 DODEKAMIN.</small>
