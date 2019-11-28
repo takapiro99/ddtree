@@ -17,6 +17,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_NAME = os.path.basename(BASE_DIR)
 
 
+
+LOGIN_URL = 'pika:login'
+LOGIN_REDIRECT_URL = 'pika:top'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -39,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "pika",
+    
 ]
 
 MIDDLEWARE = [
@@ -82,7 +87,7 @@ DATABASES = {
     }
 }
 
-
+AUTH_USER_MODEL = "pika.User"
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
