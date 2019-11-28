@@ -91,7 +91,7 @@ def posttest(request):
                 if (len(ss[i]))==2:
                     ss[i]="0"+str(ss[i])
             
-            #print(ss)
+            print(ss)
             #print("")
             #aaa = "".join(map(str,aa))
             #print(aaa)
