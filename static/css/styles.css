@@ -61,7 +61,7 @@ a:hover {
   border: 3px solid　green;
   border-radius: 5px;
   background-color: green;
-  margin:auto;
+  margin-top:auto;
 }
 
 .btn a:hover {
@@ -131,7 +131,8 @@ a img:hover {
 }
 
 .content {
-  width: 960px;
+  height:50px;
+  width: 220px;
   margin: 0 auto;
 }
 
@@ -149,7 +150,7 @@ a img:hover {
 .
 
 
-section {
+.section {
   margin-bottom: 35px;
 }
 
@@ -243,11 +244,9 @@ footer small {
   text-align:auto;
 }
 
-p{
-  margin-top:300px;
-  font-size:20px;
+.home{
+  margin-top:0px;
 }
-
 
 /*tree table
 ----------------------------------------*/
