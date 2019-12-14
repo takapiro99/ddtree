@@ -16,17 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+#from django.contrib import admin
 
 
 app_name="pika"
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
     path("", views.index, name="index"),
     path("posttest", views.posttest, name="posttest"),
     path("esp/",views.esp,name="esp"),
     path("tree",views.tree, name="tree"),
     path("about",views.about, name="about"),
-    #path("post",views.post, name="post"),
     path("waitinglist",views.waitinglist, name="waitinglist"),
+    path("login/",views.Login.as_view(), name="login"),
+    path("logout/",views.Logout.as_view(), name="logout"),
+    path('user_create/', views.UserCreate.as_view(), name='user_create'),
+    path('user_create/done', views.UserCreateDone.as_view(), name='user_create_done'),
+    path('user_create/complete/<token>/', views.UserCreateComplete.as_view(), name='user_create_complete'),
 ]

@@ -1,8 +1,91 @@
 <!DOCTYPE html>
-<html>
-    <title></title>
-    <body>
-        <p>hello this is index.</p>
+  <html>
 
-    </body>
-</html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <title>AboutProject｜DODEKAMIN TREE Project</title>
+    <link href="static/css/styles.css" rel="stylesheet">
+    <link href="../static/images/favicon-2.ico" rel="icon">
+  </head>
+
+  <body id="about">
+    <div id="wrap3">
+      <header>
+        <div class="logo">
+          <a href="/"><img src="../static/images/project.png" alt="DODEKAMINTREE"></a>
+        </div>
+        <nav>
+          <ul class="global-nav">
+            <li><a href="/about">AboutProject</a></li>
+            <li><a href="/tree">Tree</a></li>
+            <li><a href="/waitinglist">WaitingList</a></li>
+          </ul>
+
+
+
+
+          
+            <a class="navbar-brand" href="{% url 'pika:index' %}">???????</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                <li>
+                  <a class="nav-item nav-link" href="{% url 'pika:logout' %}">?????</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-item nav-link" href="{% url 'pika:login' %}">
+                  ?????????????????
+                </a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+
+
+
+
+
+
+
+        </nav>
+      </header>
+
+      <div id="wrap">
+        <div class="content">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+
+
+
+
+
+
+
+      <footer>
+        <small>(C)2019 DODEKAMIN.</small>
+      </footer>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+    integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+  </body>
+
+  </html>
