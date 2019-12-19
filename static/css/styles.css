@@ -1,3 +1,6 @@
+@charset "UTF-8";
+
+
 body {
   font-size: 15px;
   line-height: 2;
@@ -6,6 +9,17 @@ body {
   color: #333333;
   text-align: center;
   font-family: Arial;
+}
+
+  input.font-awesome {
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+
+label{
+  margin-top:10px;
 }
 
 .now{
@@ -64,7 +78,7 @@ a {
   background-color: #ffffff;
 }
 
-img:hover {
+.logo:hover {
   opacity: .8;
 }
 
@@ -160,13 +174,14 @@ footer small {
 }
 #about{
   background-color:darkslategray;
+  width:100%;
 }
 #wrap4{
   height:auto;
   width:70%;
   background-color:floralwhite;
   border-radius:100px;
-  margin:40 auto;
+  margin:100px auto;
 }
 #content{
   padding:60px;
@@ -174,11 +189,10 @@ footer small {
 }
 
 #wrap {
-  margin-top: 0;
   padding: 0;
   background-color: transparent;
   clear: both;
-  margin-top: 10px;
+  margin-top: 100px;
   width:100%;
   height:70%;
 }
@@ -219,7 +233,7 @@ footer small {
 }
 
 .sousin{
-  margin-top:150px;
+  margin-top:10px;
   text-align:auto;
 }
 
@@ -288,12 +302,6 @@ footer small {
   
   
 }
-#wraps{
-  background-color:antiquewhite;
-  border-radius:100px;
-  width:70%;
-  margin:0 auto;
-}
 
 #inputs {
   text-align: left;
@@ -315,9 +323,13 @@ footer small {
   margin-top:80px;
 }
 .canvas1{
-  width:341px;
+  width:auto;
   height:365px;
+  position:absolute;
+  z-index:100;
 }
+
+
 
 .miki{
   position:absolute;
@@ -340,19 +352,32 @@ footer small {
 }
 .star{
   background-image:url("../static/images/star.png");
-  width:160px;
+  width:100px;
   position:absolute;
-  top:-120px;
-  left:98px;
+  top:-95px;
+  left:120px;
+  
 }
+
+#wraps{
+  background-color:antiquewhite;
+  border-radius:100px;
+  width:70%;
+  margin:0 auto;
+}
+
 .ueake{
   padding-top:5px;
 }
 
+
+
+
 @media screen and (max-width:600px){
+  
   body{
     margin-top:0;
-    width:auto;
+    width:100%;
   }
 
   header{
@@ -367,47 +392,58 @@ footer small {
   background-repeat:no-repeat;
   background-size:cover;
   }
-  .global-nav{
-    float:none;
-    margin:10px;
-  }
+  
   nav{
-    display:block;
-    width:450px;
-    height:100px;
-    margin:0 auto;
+    width:100%;
+    margin-bottom:20px;
   }
 
-  .inputs{
-    margin-top:80px;
-    position:absolute;
-    left:85px;
+  #inputs{
     float:none;
-    
+    width:80%;
+    margin:20px auto;
   }
-  .canvas1{
+  
+  #wrap1{
+    background-color:darkslateblue;
     position:absolute;
-    left:25;
-    top:800px;
+    left:0;
+    width:100%;
+  }
+  
+  .mycanvas{
+    position:absolute;
+    width:100%;
+    top:100px;
+    left:20px;
+  }
+  
+  #canvas123{
+    width:80%;
+    margin:0 auto;
+    position:relative;
+    float:none;
   }
   
   .star{
     position:absolute;
-    top:820px;
-    left:120px;
-    z-index:-1000;
+    height:100px;
+    width:100px;
+    top:4px;
+    margin:0 auto;
+    
   }
   small{
     display:none;
   }
   .miki{
     position:absolute;
-    top:1303px;
-    left:155px;
+    top:420px;
+    
   }
   .dodai{
     position:absolute;
-    top:1380px;
-    left:133px;
+    top:450px;
+    
   }
 }
